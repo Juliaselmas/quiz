@@ -1,0 +1,14 @@
+$fontSizeText: 12px;
+$fontSizeMediumText: 24px;
+$fontSizeHeadline: 34px;
+$fontText: Arial, Helvetica, Sans-serif;
+
+* {
+    background-color: lightpink;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    font-family: $fontText;
+}
