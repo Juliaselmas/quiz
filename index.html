@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
+   <label for="darkMode">Dark mode, please:</label>
+    <input type="checkbox" class="darkMode" id="darkMode">
+
     <h1>IT'S QUIZTIME!</h1>
-    <div class="container">
-        <p class="question">LOREM IPSUM?</p>
+    <div id="quiz-container">
+        <h2 class="question">LOREM IPSUM?</h2>
         <label for="false">FALSE</label>
-        <input type="checkbox" name="false" id="answerOneFalse">
+        <input type="checkbox" name="false" id="false">
         <label for="true">TRUE</label>
-        <input type="checkbox" name="true" id="answerOneTrue">
+        <input type="checkbox" name="true" id="true">
     </div>
     
 </body>
