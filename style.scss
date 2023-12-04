@@ -4,9 +4,27 @@ $fontSizeHeadline: 40px;
 $fontText: Helvetica, Arial, sans-serif;
 $fontHeadline: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: lightpink;
-    
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+
+#darkMode {
+    margin: 0 4px;
+}
+
+#darkMode-container {
+    position: absolute;
+    top: 20px;
 }
 
 #quiz-container {
@@ -27,7 +45,6 @@ body {
 
 h1 {
     text-align: center;
-    font-family: $fontHeadline;
     font-size: $fontSizeHeadline;
 }
 

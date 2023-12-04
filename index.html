@@ -8,17 +8,24 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-   <label for="darkMode">Dark mode, please:</label>
+   <div id="darkMode-container">
+    <label for="darkMode">Dark mode, please:</label>
     <input type="checkbox" class="darkMode" id="darkMode">
+   </div>
 
     <h1>IT'S QUIZTIME!</h1>
+
     <div id="quiz-container">
-        <h2 class="question">LOREM IPSUM?</h2>
-        <label for="false">FALSE</label>
-        <input type="checkbox" name="false" id="false">
-        <label for="true">TRUE</label>
-        <input type="checkbox" name="true" id="true">
+       <div id="question-container"></div>
+       <button id="startButton">Start quiz!</button>
+       <!-- <button id="nextButton">Next question</button> -->
+       <div id="result-container"></div>
     </div>
-    
+
+
+
+
+   <!-- -->
+
 </body>
 </html>
