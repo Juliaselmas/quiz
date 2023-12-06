@@ -55,6 +55,7 @@ let darkModeBtn = document.querySelector("#darkMode");
 let darkModeLabel = document.querySelector("#darkMode-container label")
 let startBtn = document.querySelector("#startButton");
 let quizQuestion = document.querySelector("#question-container");
+let result = document.querySelector("#result-container");
 
 darkModeBtn.addEventListener("change", () => {
     document.body.classList.toggle("dark", darkModeBtn.checked);
@@ -75,9 +76,11 @@ function createQuestion(question) {
     //answer.id = question.id + "-2"
 
     let newAnswerBtn1 = document.createElement("input");
+    //definierar den nya input som en radiobtn:
     newAnswerBtn1.type = "radio";
+    //tilldelar radiobtn ett namn:
     newAnswerBtn1.name = "options";
-    //obs! kolla så att answerbtn2 inte får samma id
+    //skapar ett dymaniskt ID till varje radiobtn:
     newAnswerBtn1.id = `radio${question.id}-1`;
 
     let newAnswerLabel1 = document.createElement("label");
@@ -133,13 +136,28 @@ startBtn.addEventListener("click", () => {
     } else {
         //kör funktion för att visa resultatet om frågorna är slut:
         showResult();
+
+        //göm knappen här kanske?
     };
 });
 
 //skapa en funktion för att visa resultatet här:
 function showResult(){
+    let resultH2 = document.createElement("h2");
+    resultH2.innerText = "Here is your result:";
 
+    //lägg in datan från quizet här:
+
+
+    result.appendChild(resultH2);
+
+    return result;
 };
+
+
+
+
+
 
 
 /*startBtn.addEventListener("click", () => {
@@ -151,4 +169,5 @@ function showResult(){
     });
 
     startBtn.innerText = "Next";
-});*/
+});
+*/
