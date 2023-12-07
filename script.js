@@ -1,52 +1,52 @@
 let questions = [
     {
         question: "1. Är jorden platt?",
-        correctAnswer: false,
+        correctAnswer: "false",
         id:"question1"
     },
     {
         question: "2. Är vattnet blött?",
-        correctAnswer: true,
+        correctAnswer: "true",
         id:"question2"
     },
     {
         question: "3. Är jorden platt?",
-        correctAnswer: true,
+        correctAnswer: "true",
         id:"question3"
     },
     {
         question: "4. Är vattnet blött?",
-        correctAnswer: true,
+        correctAnswer: "true",
         id:"question4"
     },
     {
         question: "5. Är jorden platt?",
-        correctAnswer: false,
+        correctAnswer: "false",
         id:"question5"
     },
     {
         question: "6. Är vattnet blött?",
-        correctAnswer: true,
+        correctAnswer: "true",
         id:"question6"
     },
     {
         question: "7. Är vattnet blött?",
-        correctAnswer: false,
+        correctAnswer: "false",
         id:"question7"
     },
     {
         question: "8. Är jorden platt?",
-        correctAnswer: true,
+        correctAnswer: "true",
         id:"question8"
     },
     {
         question: "9. Är vattnet blött?",
-        correctAnswer: false,
+        correctAnswer: "false",
         id:"question9"
     },
     {
         question: "10. Är jorden platt?",
-        correctAnswer: false,
+        correctAnswer: "false",
         id:"question10"
     },
   ];
@@ -146,14 +146,55 @@ startBtn.addEventListener("click", () => {
 //skapa en funktion för att visa resultatet här:
 function showResult(){
     //skippa denna och gör en tom h2 i html istället?
-    let resultH2 = document.createElement("h2");
-    resultH2.innerText = "Here is your result:";
+    //let resultHeadline = document.createElement("h2");
+    //resultHeadline.innerText = "Here is your result:";
 
     //lägg in datan från quizet här:
-    let selectedAnswers = document.querySelector('input[name="options"]:checked');
+    
+    //ev att denna ej kommer behövas.
+    let selectedAnswers = document.querySelectorAll('input[name="options"]:checked'); 
+    console.log(selectedAnswers);
+    console.log(selectedAnswers[0]);
+
+    //lägg denna array globalt!!
+    let userResults = [];
+
+    //lägg funktionen globalt!! just nu når den inte slectedAnswers som ligger i ett annat scope.
+    questions.forEach((question, index) => {
+        //let correctAnswerString = question.correctAnswer.toString();
+        let selectedAnswer = selectedAnswers[index];
+        console.log(selectedAnswer);
+
+        if (selectedAnswer && selectedAnswer.value === question.correctAnswer) {
+            userResults.push({
+               question: question.question,
+               answer: selectedAnswer.value,
+               isCorrect: true 
+            });
+        } else {
+            userResults.push({
+                question: question.question,
+                answer: selectedAnswer.value,
+                isCorrect: false 
+             }); 
+        }
+    });
 
 
-    result.appendChild(resultH2);
+    let correctAnswerCount = userResults.filter(result => result.isCorrect).length;
+
+    let resultH2 = document.querySelector("#result-h2");
+    
+        if (correctAnswerCount > 8) {
+            resultH2.innerText = "This went great!";
+            resultH2.classList.add("resultGreen");
+        } else if (correctAnswerCount <= 5) {
+            resultH2.innerText = "This did not go very well...";
+            resultH2.classList.add("resultRed");
+        } else {
+            resultH2.innerText = "This went alright!";
+            resultH2.classList.add("resultOrange"); 
+        };
 
     return result;
 };

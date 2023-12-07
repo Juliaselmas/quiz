@@ -60,4 +60,16 @@ h1 {
   border: solid black;
   padding: 10px;
   border-radius: 10px;
+}
+
+.resultRed {
+  color: red;
+}
+
+.resultOrange {
+  color: orange;
+}
+
+.resultGreen {
+  color: green;
 }/*# sourceMappingURL=style.css.map */
