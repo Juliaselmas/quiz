@@ -57,9 +57,7 @@ h1 {
 }
 
 #startButton {
-  background-color: #391a25;
-  color: lightpink;
-  border: solid lightpink;
+  border: solid black;
   padding: 10px;
   border-radius: 10px;
 }/*# sourceMappingURL=style.css.map */

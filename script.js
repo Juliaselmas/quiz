@@ -1,51 +1,51 @@
 let questions = [
     {
-        question: "Är jorden platt?",
+        question: "1. Är jorden platt?",
         correctAnswer: false,
         id:"question1"
     },
     {
-        question: "Är vattnet blött?",
+        question: "2. Är vattnet blött?",
         correctAnswer: true,
         id:"question2"
     },
     {
-        question: "Är jorden platt?",
+        question: "3. Är jorden platt?",
         correctAnswer: true,
         id:"question3"
     },
     {
-        question: "Är vattnet blött?",
+        question: "4. Är vattnet blött?",
         correctAnswer: true,
         id:"question4"
     },
     {
-        question: "Är jorden platt?",
+        question: "5. Är jorden platt?",
         correctAnswer: false,
         id:"question5"
     },
     {
-        question: "Är vattnet blött?",
+        question: "6. Är vattnet blött?",
         correctAnswer: true,
         id:"question6"
     },
     {
-        question: "Är vattnet blött?",
+        question: "7. Är vattnet blött?",
         correctAnswer: false,
         id:"question7"
     },
     {
-        question: "Är jorden platt?",
+        question: "8. Är jorden platt?",
         correctAnswer: true,
         id:"question8"
     },
     {
-        question: "Är vattnet blött?",
+        question: "9. Är vattnet blött?",
         correctAnswer: false,
         id:"question9"
     },
     {
-        question: "Är jorden platt?",
+        question: "10. Är jorden platt?",
         correctAnswer: false,
         id:"question10"
     },
@@ -105,7 +105,7 @@ function createQuestion(question) {
     return newQuestionContainer;
 };
 
-
+//behövs för att hålla koll på numrering på frågorna:
 let currentQuestionIndex = 0;
 
 //funktion för att starta quizet:
@@ -115,15 +115,16 @@ startBtn.addEventListener("click", () => {
     if (quizQuestion.firstChild) {
         quizQuestion.firstChild.style.display = "none";
     }
-    //visar en ny fråga:
+    //visar en ny fråga och nollställer datan i div:en #question-container:
     if (currentQuestionIndex < questions.length) {
         let quizElement = createQuestion(questions[currentQuestionIndex]);
         quizQuestion.innerHTML = "";
         quizQuestion.appendChild(quizElement);
 
+        //motsatsen till style.display = "block". Visar en ny fråga:
         quizQuestion.firstChild.style.display = "block";
 
-        //ändrar texten på knappen:
+        //ändrar texten på knappen när det finns inte finns fler frågor att hämta:
         if (currentQuestionIndex === questions.length - 1) {
             startBtn.innerText = "Show Result";
         } else {
@@ -138,15 +139,18 @@ startBtn.addEventListener("click", () => {
         showResult();
 
         //göm knappen här kanske?
+        startBtn.remove();
     };
 });
 
 //skapa en funktion för att visa resultatet här:
 function showResult(){
+    //skippa denna och gör en tom h2 i html istället?
     let resultH2 = document.createElement("h2");
     resultH2.innerText = "Here is your result:";
 
     //lägg in datan från quizet här:
+    let selectedAnswers = document.querySelector('input[name="options"]:checked');
 
 
     result.appendChild(resultH2);
@@ -154,20 +158,24 @@ function showResult(){
     return result;
 };
 
+//lägg till krav på iklickad radiobtn för att kunna gå vidare till nästa fråga?
 
+//lägg till tom h3 i html som kan ändras och få olika klasser (& styling i css) beroende på resultat!
+/*
+tom array?
 
+if (rätta svar < 50%) {
+    h3.innerText = "This did not go great...";
+    h3.classList.add("resultRed");
+} if else (rätta svar < 75%) {
+    h3.innerText = "This went alright."; 
+    h3.classList.add("resultOrange");
+} else {
+    h3.innerText = "This went great!";
+    h3.classList.add("resultGreen");
+}
 
+Visa antal rätt svarade frågor? ex 8/10 rätt?
+Eller skapa 10st div kopplade till varsin fråga som blir antingen gröna eller röda beroende på svar?
 
-
-
-/*startBtn.addEventListener("click", () => {
-    quizQuestion.innerHTML = "";
-
-    questions.forEach((question) => {
-        let quizElement = createQuestion(question);
-        quizQuestion.append(quizElement);
-    });
-
-    startBtn.innerText = "Next";
-});
 */
