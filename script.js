@@ -70,11 +70,6 @@ function createQuestion(question) {
     let newQuestion = document.createElement("h2");
     newQuestion.textContent = question.question;
 
-    // <label for="uniktID">True/False</label
-    // <input type="radio" name="question1" id="uniktID"
-    //answer.id = question.id + "-1"
-    //answer.id = question.id + "-2"
-
     let newAnswerBtn1 = document.createElement("input");
     //definierar den nya input som en radiobtn:
     newAnswerBtn1.type = "radio";
@@ -84,7 +79,7 @@ function createQuestion(question) {
     newAnswerBtn1.id = `radio${question.id}-1`;
 
     let newAnswerLabel1 = document.createElement("label");
-    newAnswerLabel1.innerHTML = "True";
+    newAnswerLabel1.innerHTML = "true";
     newAnswerLabel1.setAttribute("for", newAnswerBtn1.id); 
 
     let newAnswerBtn2 = document.createElement("input");
@@ -93,7 +88,7 @@ function createQuestion(question) {
     newAnswerBtn2.id = `radio${question.id}-2`;
 
     let newAnswerLabel2 = document.createElement("label");
-    newAnswerLabel2.innerHTML = "False";
+    newAnswerLabel2.innerHTML = "false";
     newAnswerLabel2.setAttribute("for", newAnswerBtn2.id);
 
     newQuestionContainer.appendChild(newQuestion);
@@ -107,6 +102,7 @@ function createQuestion(question) {
 
 //behövs för att hålla koll på numrering på frågorna:
 let currentQuestionIndex = 0;
+let userResults = [];
 
 //funktion för att starta quizet:
 startBtn.addEventListener("click", () => {
@@ -143,27 +139,55 @@ startBtn.addEventListener("click", () => {
     };
 });
 
-//skapa en funktion för att visa resultatet här:
+let selectedAnswers = document.querySelectorAll('input[name="options"]:checked'); 
+questions.forEach((question, index) => {
+    let selectedAnswer = selectedAnswers[index];
+    //console.log(selectedAnswer);
+
+    if (selectedAnswer) {
+
+    if (selectedAnswer && selectedAnswer.value === question.correctAnswer) {
+        userResults.push({
+           question: question.question,
+           answer: selectedAnswer.value,
+           isCorrect: true 
+        });
+    } else {
+        userResults.push({
+            question: question.question,
+            answer: selectedAnswer.value,
+            isCorrect: false 
+         }); 
+    }
+}
+
+});
+
+
+//funktion för att visa resultatet här:
 function showResult(){
     //skippa denna och gör en tom h2 i html istället?
     //let resultHeadline = document.createElement("h2");
     //resultHeadline.innerText = "Here is your result:";
 
     //lägg in datan från quizet här:
-    
+
     //ev att denna ej kommer behövas.
-    let selectedAnswers = document.querySelectorAll('input[name="options"]:checked'); 
+    //let selectedAnswers = document.querySelectorAll('input[name="options"]:checked'); 
     console.log(selectedAnswers);
     console.log(selectedAnswers[0]);
 
     //lägg denna array globalt!!
-    let userResults = [];
+    
 
     //lägg funktionen globalt!! just nu når den inte slectedAnswers som ligger i ett annat scope.
+    /*
     questions.forEach((question, index) => {
         //let correctAnswerString = question.correctAnswer.toString();
         let selectedAnswer = selectedAnswers[index];
         console.log(selectedAnswer);
+
+        if (selectedAnswer) {
 
         if (selectedAnswer && selectedAnswer.value === question.correctAnswer) {
             userResults.push({
@@ -178,7 +202,10 @@ function showResult(){
                 isCorrect: false 
              }); 
         }
+    }
+
     });
+    */
 
 
     let correctAnswerCount = userResults.filter(result => result.isCorrect).length;
@@ -201,20 +228,7 @@ function showResult(){
 
 //lägg till krav på iklickad radiobtn för att kunna gå vidare till nästa fråga?
 
-//lägg till tom h3 i html som kan ändras och få olika klasser (& styling i css) beroende på resultat!
 /*
-tom array?
-
-if (rätta svar < 50%) {
-    h3.innerText = "This did not go great...";
-    h3.classList.add("resultRed");
-} if else (rätta svar < 75%) {
-    h3.innerText = "This went alright."; 
-    h3.classList.add("resultOrange");
-} else {
-    h3.innerText = "This went great!";
-    h3.classList.add("resultGreen");
-}
 
 Visa antal rätt svarade frågor? ex 8/10 rätt?
 Eller skapa 10st div kopplade till varsin fråga som blir antingen gröna eller röda beroende på svar?
