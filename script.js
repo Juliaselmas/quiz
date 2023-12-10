@@ -103,6 +103,7 @@ function createQuestion(question) {
 //behövs för att hålla koll på numrering på frågorna:
 let currentQuestionIndex = 0;
 let userResults = [];
+let selectedAnswers;
 
 //funktion för att starta quizet:
 startBtn.addEventListener("click", () => {
@@ -139,43 +140,38 @@ startBtn.addEventListener("click", () => {
     };
 });
 
-let selectedAnswers = document.querySelectorAll('input[name="options"]:checked'); 
-questions.forEach((question, index) => {
-    let selectedAnswer = selectedAnswers[index];
-    //console.log(selectedAnswer);
+//onödig??
+selectedAnswers = document.querySelectorAll('input[name="options"]:checked');
+
+userResults.forEach((selectedAnswer, index) => {
+    let question = questions[index];
+    //console.log(userResults);
 
     if (selectedAnswer) {
-
-    if (selectedAnswer && selectedAnswer.value === question.correctAnswer) {
+        if (selectedAnswer && selectedAnswer.value === question.correctAnswer) {
         userResults.push({
            question: question.question,
            answer: selectedAnswer.value,
            isCorrect: true 
-        });
-    } else {
+           });
+        } else {
         userResults.push({
             question: question.question,
             answer: selectedAnswer.value,
             isCorrect: false 
-         }); 
+           }); 
+        }
     }
-}
 
 });
 
-
 //funktion för att visa resultatet här:
 function showResult(){
-    //skippa denna och gör en tom h2 i html istället?
-    //let resultHeadline = document.createElement("h2");
-    //resultHeadline.innerText = "Here is your result:";
-
-    //lägg in datan från quizet här:
 
     //ev att denna ej kommer behövas.
-    //let selectedAnswers = document.querySelectorAll('input[name="options"]:checked'); 
-    console.log(selectedAnswers);
-    console.log(selectedAnswers[0]);
+    //selectedAnswers = document.querySelectorAll('input[name="options"]:checked'); 
+    //console.log(selectedAnswers);
+    //console.log(selectedAnswers[0]);
 
     //lägg denna array globalt!!
     
@@ -183,10 +179,6 @@ function showResult(){
     //lägg funktionen globalt!! just nu når den inte slectedAnswers som ligger i ett annat scope.
     /*
     questions.forEach((question, index) => {
-        //let correctAnswerString = question.correctAnswer.toString();
-        let selectedAnswer = selectedAnswers[index];
-        console.log(selectedAnswer);
-
         if (selectedAnswer) {
 
         if (selectedAnswer && selectedAnswer.value === question.correctAnswer) {
@@ -207,7 +199,6 @@ function showResult(){
     });
     */
 
-
     let correctAnswerCount = userResults.filter(result => result.isCorrect).length;
 
     let resultH2 = document.querySelector("#result-h2");
@@ -223,7 +214,7 @@ function showResult(){
             resultH2.classList.add("resultOrange"); 
         };
 
-    return result;
+    //return result;
 };
 
 //lägg till krav på iklickad radiobtn för att kunna gå vidare till nästa fråga?
