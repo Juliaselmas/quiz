@@ -1,52 +1,52 @@
 let questions = [
     {
         question: "1. Är jorden platt?",
-        correctAnswer: "false",
+        correctAnswer: false,
         id:"question1"
     },
     {
         question: "2. Är vattnet blött?",
-        correctAnswer: "true",
+        correctAnswer: true,
         id:"question2"
     },
     {
         question: "3. Är jorden platt?",
-        correctAnswer: "true",
+        correctAnswer: true,
         id:"question3"
     },
     {
         question: "4. Är vattnet blött?",
-        correctAnswer: "true",
+        correctAnswer: true,
         id:"question4"
     },
     {
         question: "5. Är jorden platt?",
-        correctAnswer: "false",
+        correctAnswer: false,
         id:"question5"
     },
     {
         question: "6. Är vattnet blött?",
-        correctAnswer: "true",
+        correctAnswer: true,
         id:"question6"
     },
     {
         question: "7. Är vattnet blött?",
-        correctAnswer: "false",
+        correctAnswer: false,
         id:"question7"
     },
     {
         question: "8. Är jorden platt?",
-        correctAnswer: "true",
+        correctAnswer: true,
         id:"question8"
     },
     {
         question: "9. Är vattnet blött?",
-        correctAnswer: "false",
+        correctAnswer: false,
         id:"question9"
     },
     {
         question: "10. Är jorden platt?",
-        correctAnswer: "false",
+        correctAnswer: false,
         id:"question10"
     },
   ];
@@ -77,6 +77,8 @@ function createQuestion(question) {
     newAnswerBtn1.name = "options";
     //skapar ett dymaniskt ID till varje radiobtn:
     newAnswerBtn1.id = `radio${question.id}-1`;
+    //skapar ett value:
+    newAnswerBtn1.value = "true";
 
     let newAnswerLabel1 = document.createElement("label");
     newAnswerLabel1.innerHTML = "true";
@@ -86,6 +88,7 @@ function createQuestion(question) {
     newAnswerBtn2.type = "radio";
     newAnswerBtn2.name = "options";
     newAnswerBtn2.id = `radio${question.id}-2`;
+    newAnswerBtn2.value = "false";
 
     let newAnswerLabel2 = document.createElement("label");
     newAnswerLabel2.innerHTML = "false";
@@ -102,6 +105,7 @@ function createQuestion(question) {
 
 //behövs för att hålla koll på numrering på frågorna:
 let currentQuestionIndex = 0;
+
 let userResults = [];
 let selectedAnswers;
 
@@ -114,10 +118,44 @@ startBtn.addEventListener("click", () => {
     }
     //visar en ny fråga och nollställer datan i div:en #question-container:
     if (currentQuestionIndex < questions.length) {
+
+        //Spara svaret på nuvarande fråga:
+        selectedAnswers = document.querySelectorAll('input[name="options"]:checked');
+
+        selectedAnswers.forEach((selectedAnswer, index) => {
+            let questionIndex = currentQuestionIndex -1;
+            let question = questions[questionIndex];
+
+        console.log(selectedAnswer);
+        console.log(selectedAnswer.value);
+        console.log(question.correctAnswer);
+
+            if (selectedAnswer) {
+                let isCorrect = selectedAnswer.value === question.correctAnswer.toString();
+                userResults.push({
+                   question: question.question,
+                   answer: selectedAnswer.value,
+                   isCorrect: true, 
+                   questionIndex: questionIndex
+                   });
+                } else {
+                userResults.push({
+                    question: question.question,
+                    answer: selectedAnswer.value,
+                    isCorrect: false, 
+                    questionIndex: questionIndex
+                   }); 
+                }
+        
+        });
+
+
+        // Visa ut nästa fråga
         let quizElement = createQuestion(questions[currentQuestionIndex]);
         quizQuestion.innerHTML = "";
         quizQuestion.appendChild(quizElement);
 
+        
         //motsatsen till style.display = "block". Visar en ny fråga:
         quizQuestion.firstChild.style.display = "block";
 
@@ -132,6 +170,8 @@ startBtn.addEventListener("click", () => {
         currentQuestionIndex++;
 
     } else {
+
+
         //kör funktion för att visa resultatet om frågorna är slut:
         showResult();
 
@@ -140,64 +180,10 @@ startBtn.addEventListener("click", () => {
     };
 });
 
-//onödig??
-selectedAnswers = document.querySelectorAll('input[name="options"]:checked');
 
-userResults.forEach((selectedAnswer, index) => {
-    let question = questions[index];
-    //console.log(userResults);
-
-    if (selectedAnswer) {
-        if (selectedAnswer && selectedAnswer.value === question.correctAnswer) {
-        userResults.push({
-           question: question.question,
-           answer: selectedAnswer.value,
-           isCorrect: true 
-           });
-        } else {
-        userResults.push({
-            question: question.question,
-            answer: selectedAnswer.value,
-            isCorrect: false 
-           }); 
-        }
-    }
-
-});
 
 //funktion för att visa resultatet här:
 function showResult(){
-
-    //ev att denna ej kommer behövas.
-    //selectedAnswers = document.querySelectorAll('input[name="options"]:checked'); 
-    //console.log(selectedAnswers);
-    //console.log(selectedAnswers[0]);
-
-    //lägg denna array globalt!!
-    
-
-    //lägg funktionen globalt!! just nu når den inte slectedAnswers som ligger i ett annat scope.
-    /*
-    questions.forEach((question, index) => {
-        if (selectedAnswer) {
-
-        if (selectedAnswer && selectedAnswer.value === question.correctAnswer) {
-            userResults.push({
-               question: question.question,
-               answer: selectedAnswer.value,
-               isCorrect: true 
-            });
-        } else {
-            userResults.push({
-                question: question.question,
-                answer: selectedAnswer.value,
-                isCorrect: false 
-             }); 
-        }
-    }
-
-    });
-    */
 
     let correctAnswerCount = userResults.filter(result => result.isCorrect).length;
 
@@ -214,8 +200,10 @@ function showResult(){
             resultH2.classList.add("resultOrange"); 
         };
 
-    //return result;
+    return resultH2;
 };
+
+
 
 //lägg till krav på iklickad radiobtn för att kunna gå vidare till nästa fråga?
 
