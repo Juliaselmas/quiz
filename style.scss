@@ -1,15 +1,16 @@
 $fontSizeText: 12px;
 $fontSizeMediumText: 24px;
-$fontSizeHeadline: 40px;
+$fontSizeHeadline: 65px;
 $fontText: Helvetica, Arial, sans-serif;
 $fontHeadline: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
 
 * {
     box-sizing: border-box;
+    text-align: center;
 }
 
 body {
-    background-color: lightpink;
+    background-color: #86A5D9;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -28,10 +29,15 @@ body {
 }
 
 #quiz-container {
+    background-color: antiquewhite;
+    height: 650px;
+    width: 650px;
+    border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center; 
     justify-content: center;
+    
 }
 
 .darkMode:checked {
@@ -44,8 +50,10 @@ body {
 }
 
 h1 {
+    color: #003844;
     text-align: center;
     font-size: $fontSizeHeadline;
+    font-family: 'Dokdo';
 }
 
 .question {
@@ -81,3 +89,10 @@ h1 {
     color: green;
 }
 
+input {
+    margin: 0 5px;
+}
+
+label {
+    margin: 0 10px 0 0;
+}

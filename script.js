@@ -1,56 +1,56 @@
 let questions = [
     {
-        question: "1. Är jorden platt?",
+        question: "1. Zagreb is the capital city of Poland. True of false?",
         correctAnswer: false,
         id:"question1"
     },
     {
-        question: "2. Är vattnet blött?",
+        question: "2. Ottawa is the capital city of Canada. True or false?",
         correctAnswer: true,
         id:"question2"
     },
     {
-        question: "3. Är jorden platt?",
+        question: "3. Suva is the capital of Fiji. True or false??",
         correctAnswer: true,
         id:"question3"
     },
     {
-        question: "4. Är vattnet blött?",
+        question: "4. Vaduz is the capital city of Liechtenstein. True or false?",
         correctAnswer: true,
         id:"question4"
     },
     {
-        question: "5. Är jorden platt?",
+        question: "5. Tbilisi is the capital city of Libya. True or false?",
         correctAnswer: false,
         id:"question5"
     },
     {
-        question: "6. Är vattnet blött?",
+        question: "6. Kingston is the capital city of Jamaica. True or false?",
         correctAnswer: true,
         id:"question6"
     },
     {
-        question: "7. Är vattnet blött?",
+        question: "7. Bamako is the capital city of Malawi. True or false?",
         correctAnswer: false,
         id:"question7"
     },
     {
-        question: "8. Är jorden platt?",
+        question: "8. Kathmandu is the capital city of Nepal. True or false?",
         correctAnswer: true,
         id:"question8"
     },
     {
-        question: "9. Är vattnet blött?",
+        question: "9. Doha is the capital city of Paraguay. True or false?",
         correctAnswer: false,
         id:"question9"
     },
     {
-        question: "10. Är jorden platt?",
+        question: "10. Barcelona is the capital of Spain. True or false??",
         correctAnswer: false,
         id:"question10"
     },
     {
-        question: "11. Är jorden platt?",
+        question: "All done! Ready for some results?",
         correctAnswer: true,
         id:"question11"
     },
@@ -194,6 +194,7 @@ function showResult(){
     let correctAnswerCount = userResults.filter(result => result.isCorrect).length;
 
     let resultH2 = document.querySelector("#result-h2");
+    let resultP = document.querySelector("#result-paragraph");
     
         if (correctAnswerCount > 8) {
             resultH2.innerText = "This went great!";
@@ -206,7 +207,19 @@ function showResult(){
             resultH2.classList.add("resultOrange"); 
         };
 
+        resultP.innerText = 
+        `Is Zagreb the capital of Poland? No, it's the capital of Croatia.
+        Is Ottowa the capital of Canada? Yes, that's true!
+        Is Suva the capital of Fiji? Yes, that's true!
+        Is Vaduz the capital of Liechtenstein? Yes, that's true!
+        Is Tbilisi the capital of Libya? No, it's the capital of .....
+        Is Kingston the capital of Jamaica? Yes that's true!
+        Is Bamako the capital of Malawi? No, it's the capital of .....
+        
+        `
+
     return resultH2;
+    
 };
 
 
