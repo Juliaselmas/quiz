@@ -49,6 +49,11 @@ let questions = [
         correctAnswer: false,
         id:"question10"
     },
+    {
+        question: "11. Är jorden platt?",
+        correctAnswer: true,
+        id:"question11"
+    },
   ];
 
 let darkModeBtn = document.querySelector("#darkMode");
@@ -130,8 +135,9 @@ startBtn.addEventListener("click", () => {
         console.log(selectedAnswer.value);
         console.log(question.correctAnswer);
 
-            if (selectedAnswer) {
-                let isCorrect = selectedAnswer.value === question.correctAnswer.toString();
+        let isCorrect = selectedAnswer.value === question.correctAnswer.toString();
+
+            if (selectedAnswer && isCorrect) {  
                 userResults.push({
                    question: question.question,
                    answer: selectedAnswer.value,
