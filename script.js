@@ -227,38 +227,9 @@ function showResult(){
     
         // Ändra texten på resultH2
         resultP.innerText = resultText;
-    
-        // Skapa en lista för att visa varje fråga och användarens svar
-        let resultList = document.createElement("ul");
-    
-        userResults.forEach((result, index) => {
-            let listItem = document.createElement("li");
-            let question = questions[result.questionIndex];
-    
-            listItem.innerHTML = `<strong>${question.question}:</strong> Your answer: ${result.answer}. Correct answer: ${question.correctAnswer}`;
-    
-            // Markera rätt eller fel svar med färg
-            if (result.isCorrect) {
-                listItem.classList.add("correct-answer");
-            } else {
-                listItem.classList.add("incorrect-answer");
-            }
-    
-            resultList.appendChild(listItem);
-        });
 
 
     return resultH2;
     
 };
 
-
-
-//lägg till krav på iklickad radiobtn för att kunna gå vidare till nästa fråga?
-
-/*
-
-Visa antal rätt svarade frågor? ex 8/10 rätt?
-Eller skapa 10st div kopplade till varsin fråga som blir antingen gröna eller röda beroende på svar?
-
-*/
