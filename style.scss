@@ -1,6 +1,6 @@
 $fontSizeText: 12px;
 $fontSizeMediumText: 24px;
-$fontSizeHeadline: 65px;
+$fontSizeHeadline: 100px;
 $fontText: Helvetica, Arial, sans-serif;
 $fontHeadline: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
 
@@ -28,10 +28,23 @@ body {
     top: 20px;
 }
 
+#quiz-container-background {
+    //background-color: #855f2f;
+    border: 5px solid antiquewhite;
+    height: 660px;
+    width: 660px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    
+}
+
 #quiz-container {
-    background-color: antiquewhite;
-    height: 650px;
-    width: 650px;
+    background-color: #B6DCFE;
+    height: 620px;
+    width: 620px;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -50,6 +63,8 @@ body {
 }
 
 h1 {
+    position: absolute;
+    top: 130px;
     color: #003844;
     text-align: center;
     font-size: $fontSizeHeadline;

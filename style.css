@@ -22,10 +22,21 @@ body {
   top: 20px;
 }
 
+#quiz-container-background {
+  border: 5px solid antiquewhite;
+  height: 660px;
+  width: 660px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #quiz-container {
-  background-color: antiquewhite;
-  height: 650px;
-  width: 650px;
+  background-color: #B6DCFE;
+  height: 620px;
+  width: 620px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -43,9 +54,11 @@ body {
 }
 
 h1 {
+  position: absolute;
+  top: 130px;
   color: #003844;
   text-align: center;
-  font-size: 65px;
+  font-size: 100px;
   font-family: "Dokdo";
 }
 
