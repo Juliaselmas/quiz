@@ -2,7 +2,9 @@ $fontSizeText: 12px;
 $fontSizeMediumText: 24px;
 $fontSizeHeadline: 100px;
 $fontText: Helvetica, Arial, sans-serif;
-$fontHeadline: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
+//$fontHeadline: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
+$fontColorDarkMode: antiquewhite;
+$fontColorLightMode: #003844;
 
 * {
     box-sizing: border-box;
@@ -10,9 +12,10 @@ $fontHeadline: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
 }
 
 body {
-    background-color: #86A5D9;
+    background-color: #7FB7BE;
     width: 100vw;
     height: 100vh;
+    font-family: $fontText;
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -28,8 +31,35 @@ body {
     top: 20px;
 }
 
+.darkMode:checked {
+    background-color: #f6e7a5;
+}
+
+.dark {
+    color: $fontColorDarkMode;
+    background-color: #003844;
+
+    h1 {
+        color: $fontColorDarkMode; 
+    }
+
+    button {
+        background-color: #003844;
+        color: antiquewhite;
+        border: solid #62929E;
+    }
+
+    #quiz-container-background {
+        border: 5px solid #62929E;
+    }
+
+    #quiz-container {
+        background-color: #254c55;
+    }
+
+}
+
 #quiz-container-background {
-    //background-color: #855f2f;
     border: 5px solid antiquewhite;
     height: 660px;
     width: 660px;
@@ -42,7 +72,7 @@ body {
 }
 
 #quiz-container {
-    background-color: #B6DCFE;
+    background-color: #62929E;
     height: 620px;
     width: 620px;
     border-radius: 50%;
@@ -51,15 +81,6 @@ body {
     align-items: center; 
     justify-content: center;
     
-}
-
-.darkMode:checked {
-    background-color: #f6e7a5;
-}
-
-.dark {
-    color: lightpink;
-    background-color: #391a25;
 }
 
 h1 {
@@ -71,37 +92,61 @@ h1 {
     font-family: 'Dokdo';
 }
 
+.quizTitle {
+    position: absolute;
+    top: 100px;
+    font-size: 85px;
+    line-height: 0.8;
+}
+
 .question {
     font-family: $fontText;
 }
 
 .newQuestionContainer {
+    max-width: 500px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    color:antiquewhite;
 
     h2 {
         display: block;
     }
+
+    label {
+        color: antiquewhite;
+    }
 }
 
-#startButton {
-    border: solid black;
+button {
+    border: solid #003844;
     padding: 10px;
     border-radius: 10px;
+    background-color: antiquewhite;
+    color: #003844;
+}
+
+
+#result-paragraph {
+    line-height: 1.7;
+    margin: 0;
+
 }
 
 .resultRed {
-    color: red;
+    color: #c20404;
+    
 }
 
 .resultOrange {
-    color: orange;
+    color: #ed6f01;
+    
 }
 
 .resultGreen {
-    color: green;
+    color: #167000;
 }
 
 input {

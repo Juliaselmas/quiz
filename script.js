@@ -1,56 +1,67 @@
 let questions = [
     {
-        question: "1. Zagreb is the capital city of Poland. True of false?",
+        question: "1. Skydiving Archery",
+        description: "Competitors are challenged to aim and score as high points as possible while skydiving from a plane.",
         correctAnswer: false,
         id:"question1"
     },
     {
-        question: "2. Ottawa is the capital city of Canada. True or false?",
+        question: "2. Cheese Rolling",
+        description: "A sport that involves a big round cheese getting chased by a bunch of people while rolling down a hill.",
         correctAnswer: true,
         id:"question2"
     },
     {
-        question: "3. Suva is the capital of Fiji. True or false??",
+        question: "3. Extreme Ironing",
+        description: "Whoever irons their clothes in the wierdest and most challenging places win.",
         correctAnswer: true,
         id:"question3"
     },
     {
-        question: "4. Vaduz is the capital city of Liechtenstein. True or false?",
+        question: "4. Chess Boxing",
+        description: "Just as the name tells you; a sport where chess and boxing is combined. You either win by chess mate or knockout.",
         correctAnswer: true,
         id:"question4"
     },
     {
-        question: "5. Tbilisi is the capital city of Libya. True or false?",
+        question: "5. Extreme Hula Hoop Marathon",
+        description: "The first one to finish the marathon while still hula hooping wins.",
         correctAnswer: false,
         id:"question5"
     },
     {
-        question: "6. Kingston is the capital city of Jamaica. True or false?",
+        question: "6. Worm charming",
+        description: "The person that has managed to attract the most worms from the ground wins.",
         correctAnswer: true,
         id:"question6"
     },
     {
-        question: "7. Bamako is the capital city of Malawi. True or false?",
+        question: "7. Pumpkin Precision Bowling",
+        description: "Imagine regular bowling but with a very uneven bowling ball.",
         correctAnswer: false,
         id:"question7"
     },
     {
-        question: "8. Kathmandu is the capital city of Nepal. True or false?",
+        question: "8. Wife Carrying",
+        description: "A race where men are running through a obstacle course while carrying their wifes on their backs.",
         correctAnswer: true,
         id:"question8"
     },
     {
-        question: "9. Doha is the capital city of Paraguay. True or false?",
+        question: "9. Handstand Hammer Throw",
+        description: "A sport where the goal is to throw your hammer as far as possible, while being upside down.",
         correctAnswer: false,
         id:"question9"
     },
     {
-        question: "10. Barcelona is the capital of Spain. True or false??",
+        question: "10. Unusual Outfit Orientation",
+        description: "The wierder and more creative outfit, the higher score you'll get.",
         correctAnswer: false,
         id:"question10"
     },
     {
         question: "All done! Ready for some results?",
+        description: "Lorem impsum bla bla bla",
         correctAnswer: true,
         id:"question11"
     },
@@ -58,6 +69,7 @@ let questions = [
 
 let darkModeBtn = document.querySelector("#darkMode");
 let darkModeLabel = document.querySelector("#darkMode-container label")
+let myH1 = document.querySelector("h1");
 let startBtn = document.querySelector("#startButton");
 let quizQuestion = document.querySelector("#question-container");
 let result = document.querySelector("#result-container");
@@ -74,6 +86,9 @@ function createQuestion(question) {
 
     let newQuestion = document.createElement("h2");
     newQuestion.textContent = question.question;
+
+    let newDescription = document.createElement("p");
+    newDescription.textContent = question.description;
 
     let newAnswerBtn1 = document.createElement("input");
     //definierar den nya input som en radiobtn:
@@ -100,6 +115,7 @@ function createQuestion(question) {
     newAnswerLabel2.setAttribute("for", newAnswerBtn2.id);
 
     newQuestionContainer.appendChild(newQuestion);
+    newQuestionContainer.appendChild(newDescription);
     newQuestionContainer.appendChild(newAnswerBtn1);
     newQuestionContainer.appendChild(newAnswerLabel1);
     newQuestionContainer.appendChild(newAnswerBtn2);
@@ -116,6 +132,9 @@ let selectedAnswers;
 
 //funktion för att starta quizet:
 startBtn.addEventListener("click", () => {
+    myH1.innerText = `Wait, are theese sports
+    actually for real?`;
+    myH1.classList.add("quizTitle");
 
     //döljer föregående fråga om det finns en:
     if (quizQuestion.firstChild) {
@@ -207,16 +226,7 @@ function showResult(){
             resultH2.classList.add("resultOrange"); 
         };
 
-        resultP.innerText = 
-        `Is Zagreb the capital of Poland? No, it's the capital of Croatia.
-        Is Ottowa the capital of Canada? Yes, that's true!
-        Is Suva the capital of Fiji? Yes, that's true!
-        Is Vaduz the capital of Liechtenstein? Yes, that's true!
-        Is Tbilisi the capital of Libya? No, it's the capital of .....
-        Is Kingston the capital of Jamaica? Yes that's true!
-        Is Bamako the capital of Malawi? No, it's the capital of .....
-        
-        `
+        //resultP.innerText = 
 
     return resultH2;
     
