@@ -59,12 +59,6 @@ let questions = [
         correctAnswer: false,
         id:"question10"
     },
-    {
-        question: "All done! Ready for some results?",
-        description: "Lorem impsum bla bla bla",
-        correctAnswer: true,
-        id:"question11"
-    },
   ];
 
 let darkModeBtn = document.querySelector("#darkMode");
@@ -211,9 +205,11 @@ startBtn.addEventListener("click", () => {
 function showResult(){
 
     let correctAnswerCount = userResults.filter(result => result.isCorrect).length;
+    
 
     let resultH2 = document.querySelector("#result-h2");
     let resultP = document.querySelector("#result-paragraph");
+    
     
         if (correctAnswerCount > 8) {
             resultH2.innerText = "This went great!";
@@ -225,8 +221,32 @@ function showResult(){
             resultH2.innerText = "This went alright!";
             resultH2.classList.add("resultOrange"); 
         };
+        
 
-        //resultP.innerText = 
+        let resultText = `You got ${correctAnswerCount} out of ${questions.length} questions correct!`;
+    
+        // Ändra texten på resultH2
+        resultP.innerText = resultText;
+    
+        // Skapa en lista för att visa varje fråga och användarens svar
+        let resultList = document.createElement("ul");
+    
+        userResults.forEach((result, index) => {
+            let listItem = document.createElement("li");
+            let question = questions[result.questionIndex];
+    
+            listItem.innerHTML = `<strong>${question.question}:</strong> Your answer: ${result.answer}. Correct answer: ${question.correctAnswer}`;
+    
+            // Markera rätt eller fel svar med färg
+            if (result.isCorrect) {
+                listItem.classList.add("correct-answer");
+            } else {
+                listItem.classList.add("incorrect-answer");
+            }
+    
+            resultList.appendChild(listItem);
+        });
+
 
     return resultH2;
     
