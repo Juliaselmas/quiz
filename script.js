@@ -19,7 +19,7 @@ let questions = [
     },
     {
         question: "4. Chess Boxing",
-        description: "Just as the name tells you; a sport where chess and boxing is combined. You either win by chess mate or knockout.",
+        description: "Just as the name tells you; a sport where chess and boxing is combined. You either win by checkmate or knockout.",
         correctAnswer: true,
         id:"question4"
     },
@@ -95,7 +95,7 @@ function createQuestion(question) {
     newAnswerBtn1.value = "true";
 
     let newAnswerLabel1 = document.createElement("label");
-    newAnswerLabel1.innerHTML = "true";
+    newAnswerLabel1.innerHTML = "True";
     newAnswerLabel1.setAttribute("for", newAnswerBtn1.id); 
 
     let newAnswerBtn2 = document.createElement("input");
@@ -105,7 +105,7 @@ function createQuestion(question) {
     newAnswerBtn2.value = "false";
 
     let newAnswerLabel2 = document.createElement("label");
-    newAnswerLabel2.innerHTML = "false";
+    newAnswerLabel2.innerHTML = "False";
     newAnswerLabel2.setAttribute("for", newAnswerBtn2.id);
 
     newQuestionContainer.appendChild(newQuestion);
@@ -123,6 +123,7 @@ let currentQuestionIndex = 0;
 
 let userResults = [];
 let selectedAnswers;
+
 
 //funktion för att starta quizet:
 startBtn.addEventListener("click", () => {
@@ -144,12 +145,9 @@ startBtn.addEventListener("click", () => {
             let questionIndex = currentQuestionIndex -1;
             let question = questions[questionIndex];
 
-        console.log(selectedAnswer);
-        console.log(selectedAnswer.value);
-        console.log(question.correctAnswer);
-
         let isCorrect = selectedAnswer.value === question.correctAnswer.toString();
 
+            //loggar igenom användarens svar och checkar om svaret matchar det rätt svarsalternativet i objektet.
             if (selectedAnswer && isCorrect) {  
                 userResults.push({
                    question: question.question,
@@ -211,7 +209,7 @@ function showResult(){
     let resultP = document.querySelector("#result-paragraph");
     
     
-        if (correctAnswerCount > 8) {
+        if (correctAnswerCount >= 8) {
             resultH2.innerText = "This went great!";
             resultH2.classList.add("resultGreen");
         } else if (correctAnswerCount <= 5) {
@@ -222,7 +220,7 @@ function showResult(){
             resultH2.classList.add("resultOrange"); 
         };
         
-
+        //skapar en dynamisk sträng med värden från antal rätt inputs och arrayens totala längd.
         let resultText = `You got ${correctAnswerCount} out of ${questions.length} questions correct!`;
     
         // Ändra texten på resultH2
