@@ -9,11 +9,11 @@ $fontColorLightMode: #003844;
 @media (max-width: 576px) {
 
     h1 {
-        //position: absolute;
-        //top: 130px;
+        position: absolute;
+        top: 50px;
         color: #003844;
         text-align: center;
-        font-size: 70px;
+        font-size: 40px;
         font-family: 'Dokdo';
     }
     
