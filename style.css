@@ -1,4 +1,4 @@
-@media (max-width: 476px) {
+@media (min-width: 576px) {
   h1 {
     position: relative;
     top: 50px;

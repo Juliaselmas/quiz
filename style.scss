@@ -6,7 +6,7 @@ $fontText: Helvetica, Arial, sans-serif;
 $fontColorDarkMode: antiquewhite;
 $fontColorLightMode: #003844;
 
-@media (max-width: 476px) {
+@media (min-width: 576px) {
 
     h1 {
         position: relative;
