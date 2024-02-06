@@ -1,6 +1,6 @@
-@media (min-width: 576px) {
+@media (max-width: 480px) {
   h1 {
-    position: relative;
+    position: absolute;
     top: 50px;
     color: #bb20b8;
     text-align: center;
