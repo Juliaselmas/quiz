@@ -6,6 +6,24 @@ $fontText: Helvetica, Arial, sans-serif;
 $fontColorDarkMode: antiquewhite;
 $fontColorLightMode: #003844;
 
+@media (max-width: 576px) {
+
+    h1 {
+        //position: absolute;
+        //top: 130px;
+        color: #003844;
+        text-align: center;
+        font-size: 70px;
+        font-family: 'Dokdo';
+    }
+    
+    #startButton {
+        position: absolute;
+        bottom: 300px;
+    }
+
+}
+
 * {
     box-sizing: border-box;
     text-align: center;
